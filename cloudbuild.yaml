@@ -1,11 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/YOUR_PROJECT/YOUR_REPO/app:v1', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/ci-cd-gke-123456/ci-cd-repo/app:v1', '.']
   
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/YOUR_PROJECT/YOUR_REPO/app:v1']
+    args: ['push', 'us-central1-docker.pkg.dev/ci-cd-gke-123456/ci-cd-repo/app:v1']
 
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s/deployment.yaml']
+
 images:
-  - 'us-central1-docker.pkg.dev/YOUR_PROJECT/YOUR_REPO/app:v1'
+  - 'us-central1-docker.pkg.dev/ci-cd-gke-123456/ci-cd-repo/app:v1'
