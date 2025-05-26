@@ -6,7 +6,7 @@ steps:
     args: ['push', 'us-central1-docker.pkg.dev/ci-cd-gke-123456/ci-cd-repo/app:v1']
 
   - name: 'gcr.io/cloud-builders/kubectl'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a' # Replace with your actual zone
+      - 'CLOUDSDK_CONTAINER_CLUSTER=my-cluster' # Replace with your actual cluster name
     args: ['apply', '-f', 'k8s/deployment.yaml']
-
-images:
-  - 'us-central1-docker.pkg.dev/ci-cd-gke-123456/ci-cd-repo/app:v1'
